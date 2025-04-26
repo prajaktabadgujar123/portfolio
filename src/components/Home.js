@@ -30,7 +30,7 @@ const Star = styled.div`
 `;
 
 const StarBackground = () => {
-  const stars = Array.from({ length: 200 }).map((_, i) => ({
+  const stars = Array.from({ length: 350 }).map((_, i) => ({
     left: Math.random() * 100,
     top: Math.random() * 100,
     duration: 3 + Math.random() * 3,

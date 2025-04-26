@@ -84,7 +84,7 @@ const Navbar = () => {
             size="large"
             sx={navbarStyles.menuButton}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ color: "white" }} />
           </IconButton>
         )}
 
