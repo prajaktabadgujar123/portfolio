@@ -18,6 +18,7 @@ import {
   Avatar,
   IconButton,
   Drawer,
+  Tooltip,
 } from "@mui/material";
 import profilePicture from "../assets/profilePicture.jpg";
 import { navbarStyles } from "./NavbarStyles";
@@ -90,26 +91,24 @@ const Navbar = () => {
 
         <Box sx={navbarStyles.navContainer}>
           {navItems?.map((item) => (
-            <Box
-              key={item.name}
-              component={Link}
-              to={item.link}
-              sx={navbarStyles.navItem}
-            >
-              <Box sx={navbarStyles.iconContainer}>{item.icon}</Box>
-            </Box>
+            <Tooltip key={item.name} title={item.name} placement="right" arrow>
+              <Box component={Link} to={item.link} sx={navbarStyles.navItem}>
+                <Box sx={navbarStyles.iconContainer}>{item.icon}</Box>
+              </Box>
+            </Tooltip>
           ))}
         </Box>
 
         <Box sx={navbarStyles.navContainer}>
           {socialItems?.map((item) => (
-            <Box
-              key={item.name}
-              onClick={() => window.open(item.link, "_blank")}
-              sx={navbarStyles.navItem}
-            >
-              <Box sx={navbarStyles.iconContainer}>{item.icon}</Box>
-            </Box>
+            <Tooltip key={item.name} title={item.name} placement="right" arrow>
+              <Box
+                onClick={() => window.open(item.link, "_blank")}
+                sx={navbarStyles.navItem}
+              >
+                <Box sx={navbarStyles.iconContainer}>{item.icon}</Box>
+              </Box>
+            </Tooltip>
           ))}
         </Box>
 

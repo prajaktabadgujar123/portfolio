@@ -31,6 +31,8 @@ import NodeZoom from "../assets/Nodes/NodeZoom.png";
 import NodeAttach from "../assets/Nodes/NodeAttach.png";
 import NodeColor from "../assets/Nodes/NodeColor.png";
 import NodeFont from "../assets/Nodes/NodeFont.png";
+import { Link } from "react-router-dom";
+import { KeyboardArrowDown } from "@mui/icons-material";
 
 const ProjectsSection = styled.section`
   padding: 4rem 2rem;
@@ -360,7 +362,7 @@ const ProjectLinks = styled.div`
   }
 `;
 
-const Link = styled.a`
+const Links = styled.a`
   color: #509c87;
   text-decoration: none;
   font-weight: 500;
@@ -428,6 +430,34 @@ const DetailItem = styled.li`
     @media (max-width: 480px) {
       font-size: 1rem;
     }
+  }
+`;
+
+const ProjectLink = styled(motion.button)`
+  margin: 2rem auto;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -720,20 +750,20 @@ function Projects() {
                 </div>
                 <div>
                   <ProjectLinks>
-                    <Link
+                    <Links
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Live Demo
-                    </Link>
-                    <Link
+                    </Links>
+                    <Links
                       href={project.code}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Source Code
-                    </Link>
+                    </Links>
                   </ProjectLinks>
                   <FlipIndicator>Flip for more details ↗</FlipIndicator>
                 </div>
@@ -752,6 +782,18 @@ function Projects() {
           </FlipCard>
         </ProjectContainer>
       ))}
+      <ProjectLink
+        as={Link}
+        to="/blogs"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        View My Blogs
+        <KeyboardArrowDown style={{ transform: "rotate(-90deg)" }} />
+      </ProjectLink>
     </ProjectsSection>
   );
 }

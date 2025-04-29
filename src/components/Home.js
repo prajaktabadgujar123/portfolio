@@ -10,6 +10,7 @@ import creativity from "../assets/creativity.png";
 import creative from "../assets/creative.png";
 import Skills from "./Skills";
 import Experience from "./Experience";
+import { Link } from "react-router-dom";
 
 const twinkle = keyframes`
   0% { opacity: 0; }
@@ -249,6 +250,34 @@ const ScrollText = styled.p`
   transition: color 0.3s ease;
 `;
 
+const ViewProjectsButton = styled(motion.button)`
+  margin: 2rem auto;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+`;
+
 const imageData = [
   {
     src: image1,
@@ -350,6 +379,19 @@ function Home() {
 
       <Skills />
       <Experience />
+
+      <ViewProjectsButton
+        as={Link}
+        to="/projects"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        View My Projects
+        <KeyboardArrowDown style={{ transform: "rotate(-90deg)" }} />
+      </ViewProjectsButton>
     </HeroSection>
   );
 }

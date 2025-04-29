@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ResumePDF from "../assets/Prajakta_Badgujar_Resume.pdf";
 
 const ContactSection = styled.section`
   padding: 4rem 2rem;
   max-width: 800px;
   margin: 0 auto;
+  background: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
-  color: #333;
+  color: #fff;
 `;
 
 const ContactForm = styled.form`
-  background-color: white;
+  background: #fff;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 `;
 
 const FormGroup = styled.div`
@@ -36,53 +42,98 @@ const Label = styled.label`
 const Input = styled.input`
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
   font-size: 1rem;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.2s;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #000;
+    background: #fff;
   }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.2s;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #000;
+    background: #fff;
   }
 `;
 
 const SubmitButton = styled(motion.button)`
-  background-color: #007bff;
-  color: white;
+  background: #000;
+  color: #fff;
   padding: 1rem 2rem;
-  border: none;
-  border-radius: 4px;
+  border: 2px solid #000;
+  border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
 
   &:hover {
-    background-color: #0056b3;
+    background: transparent;
+    color: #000;
   }
 `;
 
 const SuccessMessage = styled(motion.div)`
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #fff;
+  color: #111;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 1rem;
   text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+`;
+
+const InfoNote = styled.p`
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  margin-top: 2rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+`;
+
+const DownloadResumeButton = styled.a`
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #fff;
+    color: #0a0a0a;
+    border-color: #fff;
+  }
 `;
 
 function Contact() {
@@ -161,6 +212,13 @@ function Contact() {
           </SuccessMessage>
         )}
       </ContactForm>
+      <InfoNote>
+        Currently, the Get in Touch form is not working. You can message me on
+        LinkedIn or email me using the address in my resume.
+      </InfoNote>
+      <DownloadResumeButton href={ResumePDF} download>
+        Download Resume
+      </DownloadResumeButton>
     </ContactSection>
   );
 }
