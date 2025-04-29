@@ -7,6 +7,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Blogs from "./components/Blogs";
+import ScrollToTop from "./components/ScrollToTop";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -30,6 +31,7 @@ const MainContent = styled.main`
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AppContainer>
         <Navbar />
         <MainContent>
